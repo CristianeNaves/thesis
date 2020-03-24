@@ -1,0 +1,119 @@
+% !TEX root = ./thesis.tex
+%\documentclass[phd]{pacotes/unb-cic}
+\documentclass[bacharelado]{packages/unb-cic}%
+
+%\usepackage[none]{hyphenat} %% diable hyphen
+% \usepackage{fontspec} % MacOS
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[american,brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{natbib}
+\usepackage{xcolor,graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % for tables
+\usepackage{verbatim} %% multiline comments
+\usepackage{dirtytalk} %% Quotes
+
+\usepackage{epsfig}
+
+\usepackage{listings}
+\usepackage{packages/tikz-uml}
+
+%% Algorithm
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{float}
+\newfloat{algorithm}{t}{lop}
+\floatname{algorithm}{Algorithm}
+%% End Algorithm
+
+%% definitions
+\usepackage{amsmath}
+\newtheorem{thm}{Theorem} % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+%% end definitions
+
+\graphicspath{ {imagens/} } % path to images
+
+%\bibpunct[; ]{(}{)}{,}{a}{}{;}%muda colchetes para parenteses
+
+% definicoes previas do documento
+%\selectlanguage{brazil}
+\title{GoalD: Autonomic Goal-Driven Deployment in Heterogeneous Computing Environments}
+
+\orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
+
+\coordenador[a]{\prof[a] \dr[a] Célia Ghedini Ralha}{CIC/UnB}
+
+\diamesano{16}{Dezembro}{2020}
+
+
+\membrobanca{\prof[a] \dr[a]  Célia Ghedini Ralha}{CIC/UnB}
+\membrobanca{\prof \dr Raian Ali}{Bournemouth University}
+
+\autor{Gabriel Siqueira}{Rodrigues}
+
+\CDU{004.4}
+
+\palavraschave{dependabilidade}
+\keywords{dynamic deployment, heterogeneous computing environment, context- and goal-oriented requirements engineering}
+
+%-------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+\pretextual
+%\begin{agradecimentos}
+%Agradecemos à nossa orientadora, \prof[a] \dr[a] Genaina Nunes Rodrigues,
+%\end{agradecimentos}
+
+%\begin{resumo}
+%Nesse trabalho apresentamos...
+%\end{resumo}
+
+\selectlanguage{american}
+
+\begin{abstract}%\textbf{}
+
+% \input{parts/abstract}
+
+\end{abstract}
+
+%\selectlanguage{brazil}
+\tableofcontents
+\listoffigures
+%listoftables
+
+\textual
+
+\chapter{Introduction}
+\label{chap:introduction}
+\input{parts/c1-introduction}
+
+\chapter{Background}
+\label{chap:background}
+\input{parts/c2-background}
+
+% \chapter{Evaluation}
+% \label{chap:evaluation}
+% \input{parts/evaluation}
+% %\input{end/evaluation}
+
+% \chapter{Related Work}
+% \label{chap:related}
+% \input{parts/related}
+
+% \chapter{Conclusion}
+% \label{chap:conclusion}
+% \input{parts/conclusion}
+%\input{end/conclusion}
+
+\postextual
+\anexos
+
+
+\bibliographystyle{plain}
+\bibliography{bibliografia}
+\end{document}

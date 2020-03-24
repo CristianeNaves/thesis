@@ -1,0 +1,7 @@
+pdflatex -interaction=nonstopmode qualify
+pdflatex -interaction=nonstopmode qualify
+bibtex qualify
+pdflatex -interaction=nonstopmode qualify
+#okular qualify.pdf&
+detex qualify.tex | sed '/^$/d' > qualify.txt
+

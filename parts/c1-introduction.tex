@@ -1,0 +1,131 @@
+Cyber-physical systems (CPS) integrate computational and physical components~\cite{lee_cyber_2008}. CPS influences the physical world by sensing and actuating on it. By interacting with the physical world, a CPS might provide impacting innovative solutions in several domains such as transportation~\cite{jia_survey_2016}, manufacturing~\cite{wang_current_2015}, healthcare~\cite{zhang_health-cps_2017}, and agriculture~\cite{an_agriculture_2017}.
+CPS has traditionally belonged to the domain of embedded systems and hardware. But the more recent proliferation of smart mobile devices moved CPS towards large-scale networked distributed systems, which combines the capability of different devices to control real-world ecosystems (e.g. intelligent traffic control~\cite{sundar_implementing_2015} and smart grids~\cite{bayindir_smart_2016}).
+ In these emergent scenarios, CPS has to deal with environment dynamicity, control of emergent behavior, be scalable and tolerant to threats. As a result, there is a trend towards endowing CPS with intelligence to cope with these issues and deliver the best quality of service in a given situation. These large-scale intelligent CPS have been called \emph{smart} CPS (sCPS) \cite{bures_software_2015}. To couple with the challenges emerging in the sCPS domain, new software engineering (SE) approaches are required\cite{bures_software_2015}.  And much of the specifics of sCPS that bring new challenges relate to the underlying computing environment of the sCPS: a dynamic large-scale network of heterogeneous devices. 
+
+To better define the scope of this thesis we need to better characterise the computing environment associated with a sCPS. Here we follow the  conceptual framework for context-aware systems proposed by Finkelstein and Savigni~\cite{finkelstein_framework_2001} in which the \emph{environment} is everything that the system interacts with through some interface but has no direct control of. The \emph{computing environment} is part of the environment and is the set of available devices accessible to the system. In this conceptual model, as is often the case, there is no direct control of devices as the system cannot create and add new devices to the network by itself. The \emph{physical environment} is what the sCPS interacts with, exercising some kind of sensing and control.  The device in a sCPS has a set of computing resources (e.g. CPU, memory, storage, networking) and physical resources (sensors and actuators) that allows the interaction with the physical environment. 
+
+Moreover, a computing environment is \emph{large-scale distributed and heterogeneous} if it is composed of a large number of different devices with different sets of resources. The computing environment is \emph{dynamic} when resources can be rendered available and unavailable over time. In sCPS, dynamicity is common as many devices can be mobile, powered by a battery and/or susceptible to failure. Additionally, a system can be intended to a computing environment that is largely \emph{unknown at design-time} as different users can have different sets of devices and the deployment environment evolves over time: new devices can be added to the environment, while old devices are decommissioned~\cite{bures_software_2015}.
+Commonly sCPS are supposed to be executed in distributed heterogeneous and dynamic computing environments that are largely unknown at design-time. All these attributes of the environment add complexity to the development of sCPS~\cite{bures_software_2015}.% TODO improve ref
+
+The deployment can be particularly challenging in a large-scale heterogeneous and dynamic computing environment. \emph{Software deployment} is the process of getting the software ready to be used in a given computing environment\cite{carzaniga_characterization_1998}. It involves planning which artifacts should be deployed, moving compatible artifacts to the target environment, configuring the environment and starting execution. In particular, \emph{deployment planning} requires analyzing the environment and the software architecture to solve variabilities, and coming up with which software artifacts should be present in the deployment.
+	Last but not least, heterogeneity is a factor to increase the complexity of deployment as each different node can require reasoning. The complexity is even higher in a dynamic environment as each change requires new reasoning.
+In previous work~\cite{rodrigues_autonomic_2016}, we have proposed Goalp, which introduced the idea of goal oriented deployment planning  in heterogeneous environments. An approach based on Goalp could be useful in the sCPS context, as it could contribute to the strategic planning needed to face the heterogeneity in the computing environment. In Goalp software components are annotated with information about the (a) goals that the component can achieve; (b) the required runtime resources; (c) components requirements in terms of sub-goal or tasks and (d) level of service quality that the component could provide as a function of available resources. While an approach for deployment planning in face of heterogeneity could be useful, it is not directly applicable in a sCPS context. We identify three main limitations: (i) in Goalp the computing environment is presupposed to be a single device which is a deal-breaker as sCPS is by definition distributed; (ii) the replanning in the face of change is not efficient. This is because in Goalp there is no support for adapting the deployment so each plan needs to be created from scratch; (iii) Goalp is a centralized control approach in which an algorithm is executed to come up with the deployment plan. We argue that a centralized control approach is not suitable for a sCPS as discussed next. 
+
+As stated by Bures et al.~\cite{bures_software_2015}, a general goal for a sCPS is to deliver the best possible service in a situation. To achieve this, a sCPS must reason about user preferences, alternatives, and available resources. In a centralized approach, a central component should process all data in order to come up with the best target configuration. It means that all required data about the state of the system should be available in the central control unit. This we believe is a strong restraint to the scalability of the system and therefore it is not suitable as a general solution for sCPS.
+ 
+
+In this context, we propose to investigate if a goal-oriented deployment approach would be suitable for driving the adaptation on a sCPS. In the next section we present our objectives and research question. 
+
+%
+%\subsection{Motivation}
+%
+%In order to ease the development of practical innovative application in sCPS an approach to handle complexity at the computing environment is required. While there is existing promising approaches that can handle some of challenges, to the best of our knowledge there is no proposed approach that handle all these challenges. 
+
+\subsection{Objective}
+\label{sec:objective}
+
+This thesis project has the general objective to propose an approach for the development of self-organizing sCPS in large-scale, heterogeneous and highly dynamic environments. More specifically, we intend to provide a holistic approach to design and deploy software to such environments and the approach should follow a goal-oriented approach. Goal models were chosen as a central reference model to our investigation as they can be used to capture requirements, accommodate variability at design, derive the systems (variable) architecture~\cite{angelopoulos_capturing_2015,van_lamsweerde_system_2003,yu_goals_2008}, and finally be used at runtime to drive the adaptation of the system~\cite{cailliau_runtime_2017,felix_solano_taming_2019}. 
+
+%van_lamsweerde_system_2003
+% TODO refs 
+
+The following research question summarizes what we will investigate in our ongoing research:
+
+\bigskip
+ \setlength{\fboxsep}{12pt}
+ \noindent\fbox{%
+     \parbox{0.95\textwidth}{%
+         \textbf{Research Question:} Is it possible  to realize an efficient and scalable self-organizing deployment of sCPS using a goal-oriented approach?
+     }%
+ }\bigskip
+
+
+As stated before, while handling the deployment of a sCPS we expect the computing environment to be large-scale, heterogeneous and dynamic. Moreover, we expect the resulting proposal to fulfill the following requirements:
+
+\begin{itemize}
+
+%# Distribution: configure an application
+%
+%# Quality: 
+%
+%# Integration failures: 
+
+  \item\textbf{Autonomous.} The approach should handle dynamicity and heterogeneity at runtime, adapting itself as changes occur and avoiding human intervention when it is not required. And, when required, the human intervention should be at a high-level in terms of goals that should be achievable as well as required service levels. 
+
+  \item\textbf{Decentralized and Scalable.} The approach should handle the deployment of systems that require a number of different resources, possibly scattered across thousands of nodes. In order to be scalable, the approach should avoid centralized decision as it can introduce bottlenecks and single-point of failures. 
+
+  \item\textbf{Open Adaptation}. The approach should include a mechanism to allow the integration of new adaptation alternatives at runtime. This should allow the managed systems to seamless use (i) more efficient strategies that use existing resources and (ii) new resources as they become available. 
+
+%  \item \textbf{ Challenge 4: openness.} Third party developers should be able to develop components to the system. The objective here is achieve decentralization and independence of provider. According, the system should not drive adaptation relying on models that can not be extensible at runtime.
+
+\end{itemize}
+
+ 
+In order to better organize our work, we divided the research into the following specific objectives:
+
+\begin{itemize}
+  \item Design and evaluate a model at runtime for efficiently adapt the deployment of a system in a dynamic environment. 
+  \item Design and evaluate a protocol for self-organization of deployment in a large-scale distributed environment.
+  \item Design and evaluate an approach for open adaptation at deployment level allowing new adaptation alternatives to be integrated at runtime.   
+\end{itemize}
+
+
+In a heterogeneous environment, each node can have many alternatives to fulfill a given goal and each alternative can have different quality levels according to available resources. In a dynamic environment, the available resources can change frequently, rendering alternatives available and unavailable and changing the expected quality of each alternative. As changes occur frequently, the systems should be efficient in evaluating changes and planning for adaptation. In that context, we intend to investigate models at runtime to drive deployment adaptation (\emph{objective 1}).
+
+In a distributed heterogeneous environment, available nodes in a given moment can provide different quality levels for achieving a goal according to the available resources in each node. In a large-scale environment the information about available resources can constantly change. We aim to investigate how to distribute knowledge about available resources and find best execution alternatives. And doing so, avoid single point of failures and bottlenecks (\emph{objective 2})
+
+In goal-oriented adaptive systems, goals models are used as a reference model to drive the adaptation. In our third objective, we intend to investigate the extension of the approach for open adaptation. This should encompass the introduction of extension points at the goal model, extensible interfaces at the derived architecture and extension of the runtime adaptation mechanism for discovering and evaluating new components at runtime (\emph{objective 3}). 
+
+By fulfilling these objectives we expect to make progress toward a holistic approach for the development of sCPS. The ultimate goal is to aid the design of sCPS by (i) easing the inclusion of variability (alternative ways of achieving a given goal) and (ii) allowing the designer to specify high-level goals to the system that should be pursued at runtime. The approach should aid the runtime by providing efficient and scalable protocols and algorithms to resolve the included variability (i.e. finding the best alternatives) by pursuing the specified goals. With this, we intend to create an abstraction that allows developers to design, implement and deploy applications in the complex sCPS environment, abstracting away the complexity required to implement the whole self-adaptation logic.
+
+%separation of concerns: platform and application. Providing end-application developer with abstractions. 
+
+%General: 
+%> variability, each user environment is unique with different sets of devices. Integration tests in each environment is infeasible.
+
+
+%RQ 1: Runtime-Adaptation. 
+
+
+%RQ 2: Distribution. Is feasible to integrate a self-organizing multi-agent approaches in a runtime platform so it can handle the dynamic, heterogeneous of cyber-physical environment autonomously. 
+
+%RQ 2: Can a platform based on goal-driven self-organizing multi-agents be used for autonomous deployment of cyber-physical systems in distributed, dynamic, heterogeneous environments. 
+
+%RQ 3: can software developers use the platform (RQ2) to delivery applications for highly dynamic, heterogeneous  environments with minimal additional effort.
+
+%RQ 4: can software developers use the platform (RQ2) to delivery applications for environments partially unknown at design time. 
+
+
+%RQ 5: can inexperienced users utilize the platform to execute applications without having to deal with low-level technical details
+
+%
+%Openess
+%
+%RQ 3: Openness. Is it feasible to integrate components of different sources at runtime.
+%
+%Openess of Self-Adaptation
+%
+%RQ 4: Openness. Is it feasible to integrate components of different sources at runtime.
+%
+%
+%Integration tests should be conducted in the user environment. 
+%
+
+
+\subsection{Structure}
+
+The remaining chapters are organized as follows: Chapter~\ref{chap:background} introduces the theoretical background underlying our work.  Chapter~\ref{chap:goald_proposal} presents our contribution to autonomously handle dynamicity in the environment. Chapter~\ref{chap:goald_distributed} presents the conceptual model that we will follow to extend the GoalD for distributed large-scale environments.
+ Chapter~\ref{chap:related} presents the most relevant related literature work and Chapter~\ref{chap:schedule} presents the schedule for the completion of this thesis.
+ 
+ 
+ \subsection{Published Work}
+ 
+ \begin{itemize}
+\item Gabriel S. Rodrigues, Felipe P. Guimarães, Genaína N. Rodrigues, Alessia Knauss, Joao Paulo C. de Araújo, Hugo Andrade, Raian Ali, “\textbf{GoalD: A Goal-Driven deployment framework for dynamic and heterogeneous computing environments, }”\textit{Information and Software Technology}, vol. 111, pp. 159–176, Jul. 2019.
+
+\end{itemize}
+
+
+% TODO lacunas na literatura
+%https://dl.acm.org/author_page.cfm?id=81503679130&coll=DL&dl=ACM&trk=0
+

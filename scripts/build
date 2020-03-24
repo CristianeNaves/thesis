@@ -1,0 +1,4 @@
+pdflatex -interaction=nonstopmode thesis
+pdflatex -interaction=nonstopmode thesis
+bibtex thesis
+pdflatex -interaction=nonstopmode thesis

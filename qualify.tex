@@ -1,0 +1,128 @@
+% !TEX root = ./qualify.tex
+\documentclass{packages/quali}
+%\documentclass[bacharelado]{packages/unb-cic}%
+\usepackage[american,brazil]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% O pacote na linha abaixo não hifena corretamente palavras acentuadas
+%\usepackage[latin1]{inputenc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}%%% use este pacote para setar o espaço entre
+%%% linhas do seu documento. Esse recurso facilita a correção de
+%%% rascunhos por parte do seu orientador e dos membros da banca.
+
+
+%subfigure env
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+% create internal links for refs
+\usepackage{hyperref}
+%\usepackage[none]{hyphenat} %% diable hyphen
+%\usepackage{fontspec} % MacOS
+\usepackage{epstopdf}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{natbib}
+\usepackage{xcolor,graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % for tables
+\usepackage{verbatim} %% multiline comments
+\usepackage{dirtytalk} %% Quotes
+
+\usepackage{epsfig}
+
+\usepackage{siunitx}
+
+\usepackage{listings}
+%\usepackage{packages/tikz-uml}
+
+%% Algorithm
+\usepackage[ruled,linesnumbered]{algorithm2e}
+% \usepackage{float}
+% \newfloat{algorithm}{t}{lop}
+%\floatname{algorithm}{Algorithm}
+%% End Algorithm
+
+%% definitions
+\usepackage{amsmath}
+\newtheorem{thm}{Theorem} % reset theorem numbering for each chapter
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+%% end definitions
+
+\graphicspath{ {imagens/} } % path to images
+
+%\bibpunct[; ]{(}{)}{,}{a}{}{;}%muda colchetes para parenteses
+
+% definicoes previas do documento
+%\selectlanguage{brazil}
+
+\orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
+\diamesano{1}{December}{2020}
+\author{Nome aluno}
+\title{Titulo do Trabalho}
+\palavraschave{dependabilidade}
+%\keywords{dynamic deployment, heterogeneous computing environment, context- and goal-oriented requirements engineering}
+
+%-------------------------------------------------
+
+\begin{document}
+%\pretextual
+\capa
+% \sumario
+\doublespacing%%%%% Vide comentário no pacote setspace acima.
+\newpage
+
+%\begin{agradecimentos}
+%Agradecemos à nossa orientadora, \prof[a] \dr[a] Genaina Nunes Rodrigues,
+%\end{agradecimentos}
+
+%\begin{resumo}
+%Nesse trabalho apresentamos...
+%\end{resumo}
+
+\selectlanguage{american}
+%
+%\begin{abstract}%\textbf{}
+%
+%  \input{parts/abstract}
+%
+%  % In recent years we see a growing availability of devices with computer capabilities. With this come an opportunity for applications that use a number of heterogeneous computer units in an opportunistic way. The development of such application are currently challenging.
+%
+%  % In a non-adaptive computer systems the computer is static linked to its function in the system.  To achieve a hight level of dependability in such systems one would either rely on right dependable units or on a hight level of redundancy. Both this solutions genearly leads to expensive systems. Appling self-adaptiveness is possible to a system tolerate to failures without a proibit level of redundancy. allow the development of dependable multi-processor heterogeneous systems in face of not dependable units with a lower level of redundancy.
+%
+%  % Our approach is a middleware that permit uses a  multi-agent runtime goal model, in witch agents can accomplish goals by selecting strategies in its local strategies repository, evaluating them by a utility function. On top of this we aim at easy the development of adaptable open-systems applications, allowing runtime discovery of peers and opportunistically sharing tasks between them, easy integration of new functional strategies and easy integration of new adaptation strategies.
+%
+%\end{abstract}
+%
+%%\selectlanguage{brazil}
+%\tableofcontents
+%\listoffigures
+%%listoftables
+%
+%\textual
+
+\section{Introduction}
+\label{chap:introduction}
+
+\input{parts/c1-introduction}
+\pagebreak
+\section{Background}
+\label{chap:background}
+\input{parts/c2-background}
+
+\pagebreak
+\input{parts/schedule}
+
+\pagebreak
+\pagebreak
+
+%\input{end/conclusion}
+%\postextual
+%\anexos
+
+\bibliography{bibliografia}
+\bibliographystyle{plain}
+\end{document}

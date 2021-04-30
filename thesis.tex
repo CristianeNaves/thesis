@@ -14,11 +14,21 @@
 \usepackage{booktabs} % for tables
 \usepackage{verbatim} %% multiline comments
 \usepackage{dirtytalk} %% Quotes
+\usepackage{pdfpages}% incluir PDFs, usado no apêndice
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{dirtree} 
+\usepackage{changepage} 
+\usepackage{subcaption}
 
 \usepackage{epsfig}
 
 \usepackage{listings}
 \usepackage{packages/tikz-uml}
+
+\newcommand\Tstrut{\rule{0pt}{3ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}}   % = `bottom' strut
 
 %% Algorithm
 \usepackage[ruled,linesnumbered]{algorithm2e}
@@ -35,23 +45,63 @@
 
 \graphicspath{ {imagens/} } % path to images
 
+
+
+%% prof-reading
+\usepackage[normalem]{ulem} % for \sout
+\usepackage{xcolor}
+\newcommand{\raw}{$\rightarrow$}
+\newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
+\newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
+\newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
+\newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\raw}\textcolor{blue}{\uline{#2}}} % please change
+\newcommand{\issue[1]}{\marginpar{Issue\\#1}}
+
+% Put edit comments in a really ugly standout display
+\usepackage{ifthen}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide \chapter{?}
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nb}[2]{
+    \noindent\fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
+
+\newcommand{\gaa}[1]{\nb{Gabriel Ara\'ujo}{\footnotesize #1}}
+\newcommand{\gab}[1]{\nb{Gabriel}{\footnotesize #1}}
+\newcommand{\gena}[1]{\nb{Gena\'ina}{\footnotesize #1}}
+\newcommand{\gio}[1]{\nb{Giovanni}{\footnotesize #1}}
+\newcommand{\cris}[1]{\nb{Cristiane}{\footnotesize #1}}
+%% end:prof-reading
+
+
+
+
 %\bibpunct[; ]{(}{)}{,}{a}{}{;}%muda colchetes para parenteses
 
 % definicoes previas do documento
 %\selectlanguage{brazil}
-\title{GoalD: Autonomic Goal-Driven Deployment in Heterogeneous Computing Environments}
-
 \orientador[a]{\prof[a] \dr[a] Genaina Nunes Rodrigues}{CIC/UnB}
+\diamesano{1}{December}{2020}
+\author{Cristiane Naves Cardoso}
+\title{Usando BDD para Testar Especificação de Missão em Ambiente de Robótica}
+\palavraschave{dependabilidade}
+
 
 \coordenador[a]{\prof[a] \dr[a] Célia Ghedini Ralha}{CIC/UnB}
 
-\diamesano{16}{Dezembro}{2020}
 
 
 \membrobanca{\prof[a] \dr[a]  Célia Ghedini Ralha}{CIC/UnB}
 \membrobanca{\prof \dr Raian Ali}{Bournemouth University}
 
-\autor{Gabriel Siqueira}{Rodrigues}
 
 \CDU{004.4}
 
@@ -81,20 +131,28 @@
 
 \end{abstract}
 
-%\selectlanguage{brazil}
+\selectlanguage{brazil}
 \tableofcontents
 \listoffigures
-%listoftables
+\listoftables
 
 \textual
 
-\chapter{Introduction}
+\chapter{Introdução}
 \label{chap:introduction}
 \input{parts/c1-introduction}
 
-\chapter{Background}
+\chapter{Referencial Teórico}
 \label{chap:background}
 \input{parts/c2-background}
+
+\chapter{O simulador HMR Sim}
+% Label chapter:hmr_sim
+\input{parts/c3-hmrsim}
+
+\chapter{Testes}
+\label{chap:tests}
+\input{parts/tests}
 
 % \chapter{Evaluation}
 % \label{chap:evaluation}
